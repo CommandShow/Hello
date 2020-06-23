@@ -1,0 +1,34 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Deno
+        uses: denolib/setup-deno@v1.3.0
+        with:
+          deno-version: v1.x
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+      - name: Build
+        run: |
+          mkdir -p docs
+          deno bundle src/hello.ts docs/temp.js
+          echo "#!/usr/bin/env deno run" > docs/index.html
+          cat docs/temp.js >> docs/index.html
+          rm -rf docs/temp.js
+      - name: Push
+        uses: github-actions-x/commit@v2.6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: "master"
+          commit-message: "Build by GitHub Actions"
+          name: Candison
+          email: kandisheng@163.com
