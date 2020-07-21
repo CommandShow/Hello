@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Deno
-        uses: denolib/setup-deno@v1.3.0
+        uses: denolib/setup-deno@v2.0.0
         with:
           deno-version: v1.x
       - name: Checkout
@@ -17,13 +17,10 @@ jobs:
       - name: Build
         run: |
           mkdir -p docs
-          deno bundle src/hello.ts docs/temp.js
-          echo "#!/usr/bin/env deno run" > docs/index.html
-          cat docs/temp.js >> docs/index.html
-          rm -rf docs/temp.js
+          deno bundle src/hello.ts docs/index.html
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1.1.1
+        uses: actions/create-release@v1.1.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
