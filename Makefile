@@ -2,6 +2,6 @@ default: run
 
 run:
 	@deno fmt
-	@deno run src/hello.ts ${arg}
+	@deno run src/main.ts ${arg}
 
 .PHONY: default run
