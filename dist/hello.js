@@ -15,6 +15,7 @@ function green(str) {
         32
     ], 39));
 }
+const green1 = green;
 function brightBlack(str) {
     return run(str, code([
         90
@@ -28,4 +29,4 @@ const ANSI_PATTERN = new RegExp([
     "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))", 
 ].join("|"), "g");
 const name = Deno.args.join(" ");
-console.log("Hello", green(name));
+console.log("Hello", green1(name));
