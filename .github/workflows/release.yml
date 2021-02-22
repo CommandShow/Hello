@@ -12,12 +12,25 @@ jobs:
         uses: denolib/setup-deno@v2.3.0
         with:
           deno-version: v1.x
+      - name: Set up Node
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: "15"
+      - name: Set up Terser
+        run: npm install terser@5.6.0 -g
       - name: Checkout
         uses: actions/checkout@v2.3.4
       - name: Build
         run: |
           mkdir -p dist
           deno bundle src/main.ts dist/hello.js
+      - name: Compress
+        run: |
+          echo '!function(){' >> dist/temp.js
+          cat dist/hello.js >> dist/temp.js
+          echo '}()' >> dist/temp.js
+          terser --compress --output dist/hello.min.js dist/temp.js
+          rm -rf dist/temp.js
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.1.4
@@ -36,4 +49,13 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./dist/hello.js
           asset_name: hello.js
+          asset_content_type: application/x-javascript
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist/hello.min.js
+          asset_name: hello.min.js
           asset_content_type: application/x-javascript
