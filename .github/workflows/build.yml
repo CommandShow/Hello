@@ -25,6 +25,11 @@ jobs:
         run: |
           mkdir -p dist
           deno bundle src/main.ts dist/hello.js
+          echo '!function(){' >> dist/temp.js
+          cat dist/hello.js >> dist/temp.js
+          echo '}()' >> dist/temp.js
+          npx terser --compress --output dist/hello.min.js dist/temp.js
+          rm -rf dist/temp.js
       - name: Push
         uses: github-actions-x/commit@v2.7
         with:
