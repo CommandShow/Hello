@@ -1,1 +1,1 @@
-export { green } from "https://cdn.jsdelivr.net/gh/denoland/deno@std/0.85.0/std/fmt/colors.ts";
+export { green } from "https://cdn.jsdelivr.net/gh/denoland/deno_std@0.96.0/fmt/colors.ts";
