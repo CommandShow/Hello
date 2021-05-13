@@ -15,18 +15,9 @@ function green(str) {
         32
     ], 39));
 }
-const green1 = green;
-function brightBlack(str) {
-    return run(str, code([
-        90
-    ], 39));
-}
-function clampAndTruncate(n, max = 255, min = 0) {
-    return Math.trunc(Math.max(Math.min(n, max), min));
-}
 const ANSI_PATTERN = new RegExp([
     "[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)",
     "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))", 
 ].join("|"), "g");
 const name = Deno.args.join(" ");
-console.log("Hello", green1(name));
+console.log("Hello", green(name));
