@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Deno
-        uses: denoland/setup-deno@main
+        uses: denoland/setup-deno@v1.0.0
         with:
           deno-version: v1.x
       - name: Set up Node
