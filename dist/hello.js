@@ -1,4 +1,5 @@
-const noColor = globalThis.Deno?.noColor ?? true;
+const { Deno: Deno1  } = globalThis;
+const noColor = typeof Deno1?.noColor === "boolean" ? Deno1.noColor : true;
 let enabled = !noColor;
 function code(open, close) {
     return {
