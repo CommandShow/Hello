@@ -9,15 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Deno
-        uses: denoland/setup-deno@v1.0.0
+        uses: denoland/setup-deno@v1.1.0
         with:
           deno-version: v1.x
       - name: Set up Node
-        uses: actions/setup-node@v2.1.5
+        uses: actions/setup-node@v2.2.0
         with:
           node-version: "16"
       - name: Set up Terser
-        run: npm install terser@5.7.0 -g
+        run: npm install terser@5.7.1 -g
       - name: Checkout
         uses: actions/checkout@v2.3.4
       - name: Build
