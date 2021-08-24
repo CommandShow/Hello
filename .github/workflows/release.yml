@@ -29,7 +29,8 @@ jobs:
           echo '!function(){' >> dist/temp.js
           cat dist/hello.js >> dist/temp.js
           echo '}()' >> dist/temp.js
-          terser --compress --mangle --mangle-props --output dist/hello.min.js dist/temp.js
+          #terser --compress --mangle --mangle-props --output dist/hello.min.js dist/temp.js
+          terser --compress --output dist/hello.min.js dist/temp.js
           rm -rf dist/temp.js
       - name: Create Release
         id: create_release
