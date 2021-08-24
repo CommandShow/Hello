@@ -29,9 +29,9 @@ jobs:
           deno bundle src/main.ts dist/hello.js
       - name: Compress
         run: |
-          echo '!function(){' >> dist/temp.js
+          #echo '!function(){' >> dist/temp.js
           cat dist/hello.js >> dist/temp.js
-          echo '}()' >> dist/temp.js
+          #echo '}()' >> dist/temp.js
           terser --compress --mangle --mangle-props --output dist/hello.min.js dist/temp.js
           rm -rf dist/temp.js
       - name: Push
