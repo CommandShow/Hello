@@ -1,3 +1,7 @@
+// deno-fmt-ignore-file
+// deno-lint-ignore-file
+// This code was bundled using `deno bundle` and it's not recommended to edit it manually
+
 const { Deno: Deno1  } = globalThis;
 const noColor = typeof Deno1?.noColor === "boolean" ? Deno1.noColor : true;
 let enabled = !noColor;
@@ -16,9 +20,9 @@ function green(str) {
         32
     ], 39));
 }
-const ANSI_PATTERN = new RegExp([
-    "[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)",
-    "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))", 
+new RegExp([
+    "[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)",
+    "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-nq-uy=><~]))", 
 ].join("|"), "g");
 const name = Deno.args.join(" ");
 console.log("Hello", green(name));
