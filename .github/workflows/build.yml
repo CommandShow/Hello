@@ -16,13 +16,13 @@ jobs:
         with:
           deno-version: v1.x
       - name: Set up Node
-        uses: actions/setup-node@v3.1.1
+        uses: actions/setup-node@v3.3.0
         with:
           node-version: "16"
       - name: Set up Terser
-        run: npm install terser@5.12.0 -g
+        run: npm install terser@5.14.1 -g
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.0.2
       - name: Build
         run: |
           mkdir -p dist
