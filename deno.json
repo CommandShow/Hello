@@ -2,5 +2,5 @@
   "tasks": {
     "start": "deno run src/main.ts"
   },
-  "importMap": "./import.json"
+  "importMap": "./import_map.json"
 }
