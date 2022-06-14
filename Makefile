@@ -1,7 +1,7 @@
-default: run
+default: start
 
-run:
+start:
 	@deno fmt
-	@deno run src/main.ts ${arg}
+	@deno task start ${arg}
 
-.PHONY: default run
+.PHONY: default start
