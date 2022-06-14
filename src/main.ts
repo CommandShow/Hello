@@ -1,4 +1,4 @@
-import { green } from "$deno/fmt/colors.ts";
+import { green } from "./deps.ts";
 
 const name = Deno.args.join(" ");
 console.log("Hello", green(name));
