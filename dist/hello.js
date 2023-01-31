@@ -12,8 +12,8 @@ function code(open, close) {
         regexp: new RegExp(`\\x1b\\[${close}m`, "g")
     };
 }
-function run(str, code1) {
-    return enabled ? `${code1.open}${str.replace(code1.regexp, code1.open)}${code1.close}` : str;
+function run(str, code) {
+    return enabled ? `${code.open}${str.replace(code.regexp, code.open)}${code.close}` : str;
 }
 function green(str) {
     return run(str, code([
@@ -22,7 +22,7 @@ function green(str) {
 }
 new RegExp([
     "[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)",
-    "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-nq-uy=><~]))", 
+    "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-nq-uy=><~]))"
 ].join("|"), "g");
 const name = Deno.args.join(" ");
 console.log("Hello", green(name));
