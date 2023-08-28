@@ -1,6 +1,23 @@
 {
-  "tasks": {
-    "start": "deno run src/main.ts"
-  },
-  "importMap": "./import_map.json"
+    "hello": {
+        "dependencies": {
+            "deno.land": "^1.33.3"
+        }
+    },
+    "imports": {
+        "$deno/": "https://cdn.jsdelivr.net/gh/denoland/deno_std@0.196.0/",
+        "color": "https://cdn.jsdelivr.net/gh/denoland/deno_std@0.196.0/fmt/colors.ts"
+    },
+    "compilerOptions": {
+        "allowJs": false,
+        "strict": true
+    },
+    "lint": {
+        "include": [
+            "src/"
+        ]
+    },
+    "tasks": {
+        "start": "deno run src/main.ts"
+    }
 }
