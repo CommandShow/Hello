@@ -5,8 +5,8 @@
         }
     },
     "imports": {
-        "deno/": "https://cdn.jsdelivr.net/gh/denoland/deno_std@0.200.0/",
-        "color": "https://cdn.jsdelivr.net/gh/denoland/deno_std@0.200.0/fmt/colors.ts"
+        "deno/": "https://cdn.jsdelivr.net/gh/denoland/deno_std@0.224.0/",
+        "color": "https://cdn.jsdelivr.net/gh/denoland/deno_std@0.224.0/fmt/colors.ts"
     },
     "compilerOptions": {
         "allowJs": false,
